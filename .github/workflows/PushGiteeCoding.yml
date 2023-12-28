@@ -1,4 +1,4 @@
-name: Sync-Gitee-Coding
+name: Sync-Gitee
 
 on:
   push:
@@ -18,25 +18,10 @@ jobs:
             git branch --track ${branch##*/} $branch
           done
         env:
-          GITHUB_REPOSITORY: shenweiyan/WebStack-Hugo
+          GITHUB_REPOSITORY: hangzhi7/WebStack-Hugo
           GITHUB_USERNAME: ${{ secrets.GH_USERNAME }}
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          
-      - name: Push to Coding
-        run: |
-          echo "stop!"
-          #remote_repo="https://${CODING_USERNAME}:${CODING_PASSWORD}@e.coding.net/${CODING_REPOSITORY}.git"
-          #git remote add coding "${remote_repo}"
-          #git show-ref # useful for debugging
-          #git branch --verbose
-          # publish all
-          #git push --all --force coding
-          #git push --tags --force coding
-        env:
-          CODING_REPOSITORY: shumlab/webstack/WebStack-Hugo
-          #CODING_USERNAME: ${{ secrets.CODING_USERNAME }}
-          #CODING_PASSWORD: ${{ secrets.CODING_PASSWORD }}
-          
+
       - name: Push to Gitee
         run: |
           #echo "stop!"
@@ -48,6 +33,6 @@ jobs:
           git push --all --force gitee
           git push --tags --force gitee
         env:
-          GITEE_REPOSITORY: shenweiyan/WebStack-Hugo
+          GITEE_REPOSITORY: hangzhi7/WebStack-Hugo
           GITEE_USERNAME: ${{ secrets.GITEE_USERNAME }}
           GITEE_PASSWORD: ${{ secrets.GITEE_PASSWORD }}
